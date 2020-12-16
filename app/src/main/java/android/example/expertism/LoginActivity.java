@@ -78,6 +78,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
                 Toast.makeText(LoginActivity.this, "All Okk", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
             }
         });
 
