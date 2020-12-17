@@ -65,6 +65,40 @@ public class HomeActivity extends AppCompatActivity implements HomeCategoryAdapt
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId())
+                {
+                    case R.id.MyProfile:
+                        Intent intent = new Intent(HomeActivity.this,MyProfileActivity.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.developers:
+                        Intent intent1 = new Intent(HomeActivity.this,DevelopersActivity.class);
+                        startActivity(intent1);
+                        break;
+                    case R.id.Ratings:
+                        //Intent intent2 = new Intent(mContext, ProjectActivity.class);
+                       // startActivity(intent2);
+                        Toast.makeText(HomeActivity.this, "Rate Us", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.LogOut:
+                       // Intent intent3 = new Intent(mContext, AchievementActivity.class);
+                       // startActivity(intent3);
+                        Toast.makeText(HomeActivity.this, "Log Out", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.AboutUs:
+                       // Intent intent4 = new Intent(mContext,ResumeActivity.class);
+                       // startActivity(intent4);
+                        Toast.makeText(HomeActivity.this, "About Us", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.Share:
+                        //Intent intent5 = new Intent(mContext,ContactActivity.class);
+                        //startActivity(intent5);
+                        Toast.makeText(HomeActivity.this, "Share", Toast.LENGTH_SHORT).show();
+                        break;
+
+
+                }
                 return false;
             }
         });

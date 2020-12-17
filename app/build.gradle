@@ -29,6 +29,7 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'      //recyclerview dependency
     implementation 'androidx.cardview:cardview:1.0.0'             //cardview dependency
     implementation 'com.google.android.material:material:1.2.1'   //material design dependency
+    implementation 'com.mikhaellopez:circularimageview:4.2.0'// circular image view dependency...
     implementation 'com.google.code.gson:gson:2.8.6'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
