@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -51,6 +53,14 @@ public class CategoryActivity extends AppCompatActivity implements PreviewAdapte
         chipGroupSubCategory.setOnCheckedChangeListener(chipCheckChangeListener);
 
         prepareChips();
+
+        FloatingActionButton fab = findViewById(R.id.fabCreateBlog);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(CategoryActivity.this, CreateBlogActivity.class));
+            }
+        });
     }
 
     private void prepareSubCategoryList() {
@@ -97,6 +107,7 @@ public class CategoryActivity extends AppCompatActivity implements PreviewAdapte
     @Override
     public void onDomainClick(int position) {
         Toast.makeText(this, "Written by " + previewList.get(position).writerName, Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(this, ViewBlogActivity.class));
     }
 
     void prepareChips(){
