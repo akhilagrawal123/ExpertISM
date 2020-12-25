@@ -12,16 +12,35 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.HashMap;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class SignUpActivity extends AppCompatActivity {
 
     TextView signUpEmailId, signUpPass, signUpConfirmPass;
     FloatingActionButton nextSignUPBtn;
+    private Retrofit retrofit;
+    private RetrofitInterface retrofitInterface;
+    private String BASE_URL = "http://192.168.43.164:3000";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_sign_up);
+
+        retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        retrofitInterface = retrofit.create(RetrofitInterface.class);
 
         signUpEmailId = (TextView) findViewById(R.id.signUpEmailId);
         signUpPass = (TextView) findViewById(R.id.signUpPassword);
@@ -67,7 +86,28 @@ public class SignUpActivity extends AppCompatActivity {
                     return;
                 }
 
-                Toast.makeText(SignUpActivity.this, "All Okk", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(SignUpActivity.this, "All Okk", Toast.LENGTH_SHORT).show();
+                HashMap<String, String> map = new HashMap<>();
+
+                map.put("email", email);
+                map.put("password", password);
+
+                Call<LoginResult> call = retrofitInterface.executeLogin(map);
+
+                call.enqueue(new Callback<LoginResult>() {
+                    @Override
+                    public void onResponse(Call<LoginResult> call, Response<LoginResult> response) {
+                        if(response.code() == 200)
+                        {
+
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<LoginResult> call, Throwable t) {
+                        Toast.makeText(SignUpActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
 
