@@ -15,11 +15,22 @@ import android.widget.Toast;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.HashMap;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class LoginActivity extends AppCompatActivity {
 
       TextView loginEmailId , txtSignUp;
       TextView loginPass;
       FloatingActionButton nextButton;
+      private Retrofit retrofit;
+      private RetrofitInterface retrofitInterface;
+      private String BASE_URL = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +38,12 @@ public class LoginActivity extends AppCompatActivity {
         //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
+
+        retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+         retrofitInterface = retrofit.create(RetrofitInterface.class);
 
         loginEmailId = (TextView) findViewById(R.id.loginEmailId);
         loginPass = (TextView) findViewById(R.id.loginPassword);
@@ -77,8 +94,27 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
-                Toast.makeText(LoginActivity.this, "All Okk", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+//                Toast.makeText(LoginActivity.this, "All Okk", Toast.LENGTH_SHORT).show();
+//                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+
+                HashMap<String, String> map = new HashMap<>();
+
+                map.put("email", email);
+                map.put("password", password);
+
+                Call<LoginResult> call = retrofitInterface.executeLogin(map);
+
+                call.enqueue(new Callback<LoginResult>() {
+                    @Override
+                    public void onResponse(Call<LoginResult> call, Response<LoginResult> response) {
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<LoginResult> call, Throwable t) {
+                        Toast.makeText(LoginActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
 
