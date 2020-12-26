@@ -8,11 +8,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 
-public class ReplyCommentAdapter extends RecyclerView.Adapter<ReplyCommentAdapter.PreviewViewHolder>{
+public class ReplyCommentAdapter extends RecyclerView.Adapter<ReplyCommentAdapter.ReplyCommentViewHolder>{
 
     /*List<PreviewItem> list;
     PreviewListener listener;*/
@@ -24,13 +22,13 @@ public class ReplyCommentAdapter extends RecyclerView.Adapter<ReplyCommentAdapte
 
     @NonNull
     @Override
-    public PreviewViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ReplyCommentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_reply_comment, parent, false);
-        return new PreviewViewHolder(view);
+        return new ReplyCommentViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PreviewViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ReplyCommentViewHolder holder, int position) {
         /*holder.textViewHeading.setText(list.get(position).heading);
         holder.textViewWriter.setText(list.get(position).writerName);
         holder.textViewPreview.setText(list.get(position).previewText);*/
@@ -41,11 +39,11 @@ public class ReplyCommentAdapter extends RecyclerView.Adapter<ReplyCommentAdapte
         return 3;
     }
 
-    public class PreviewViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ReplyCommentViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         //PreviewListener previewListener;
         TextView textViewHeading, textViewWriter, textViewPreview;
-        public PreviewViewHolder(@NonNull View itemView) {
+        public ReplyCommentViewHolder(@NonNull View itemView) {
             super(itemView);
             /*textViewHeading = itemView.findViewById(R.id.textViewHeading);
             textViewWriter = itemView.findViewById(R.id.textViewWriter);

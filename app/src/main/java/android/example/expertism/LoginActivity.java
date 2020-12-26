@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
       FloatingActionButton nextButton;
       private Retrofit retrofit;
       private RetrofitInterface retrofitInterface;
-      private String BASE_URL = "";
+      private String BASE_URL = "https://localhost:3000";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,10 +94,10 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
-//                Toast.makeText(LoginActivity.this, "All Okk", Toast.LENGTH_SHORT).show();
-//                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+               Toast.makeText(LoginActivity.this, "All Okk", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
 
-                HashMap<String, String> map = new HashMap<>();
+/*                HashMap<String, String> map = new HashMap<>();
 
                 map.put("email", email);
                 map.put("password", password);
@@ -114,7 +114,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onFailure(Call<LoginResult> call, Throwable t) {
                         Toast.makeText(LoginActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
                     }
-                });
+                });*/
             }
         });
 

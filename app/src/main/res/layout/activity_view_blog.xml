@@ -19,6 +19,7 @@
             app:layout_scrollFlags="scroll|enterAlways|snap"
             app:title="View Blog" />
         <TextView
+            android:id="@+id/textViewBlogHeading"
             android:background="@color/transparentWhite"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -33,21 +34,31 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
-        <LinearLayout
+        <TextView
+            android:id="@+id/textViewBlogContent"
+            android:padding="5dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/textViewBlogContent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Dummy blog content\nDummy blog line 2\nDummy blog line 3."/>
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewMainComments"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                tools:listitem="@layout/card_main_comment"/>
-        </LinearLayout>
+            android:layout_weight="1"/>
     </androidx.core.widget.NestedScrollView>
+
+    <!--<com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:layout_behavior="com.google.android.material.bottomappbar.BottomAppBar$Behavior">
+        <Button
+            android:id="@+id/buttonOpenComments"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="View Comments" />
+    </com.google.android.material.appbar.AppBarLayout>-->
+    <Button
+        android:id="@+id/buttonOpenComments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
+        android:text="View Comments" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

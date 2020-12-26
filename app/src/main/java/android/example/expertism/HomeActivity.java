@@ -56,7 +56,8 @@ public class HomeActivity extends AppCompatActivity implements HomeCategoryAdapt
         list.add(new HomeCategoryAdapter.HomeItem("UI/UX Design", R.mipmap.ui, UIUX));
         list.add(new HomeCategoryAdapter.HomeItem("Video Editing", R.mipmap.video, VIDEO));
         list.add(new HomeCategoryAdapter.HomeItem("Others", R.mipmap.misc, OTHERS));
-
+        list.add(new HomeCategoryAdapter.HomeItem("Personalized Blogs", R.mipmap.misc, OTHERS));
+        list.add(new HomeCategoryAdapter.HomeItem("Bookmarks", R.mipmap.misc, OTHERS));
         displayRecyclerView();
     }
 
@@ -117,6 +118,14 @@ public class HomeActivity extends AppCompatActivity implements HomeCategoryAdapt
     @Override
     public void onDomainClick(int position) {
         Toast.makeText(this, list.get(position).itemName, Toast.LENGTH_SHORT).show();
+        if(list.get(position).itemName.equals("Personalized Blogs")){
+            startActivity(new Intent(this, PersonalizedActivity.class));
+            return;
+        }
+        if(list.get(position).itemName.equals("Bookmarks")){
+            startActivity(new Intent(this, PersonalizedActivity.class));
+            return;
+        }
         Intent intent = new Intent(this, CategoryActivity.class);
         startActivity(intent);
     }

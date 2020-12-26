@@ -1,9 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateBlogActivity">
+    tools:context=".CommentActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbarlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            app:titleTextColor="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Create Blog"
+            app:menu="@menu/create_blog_menu" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="5dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextBlogTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Blog Title"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="5dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextBlogContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Blog Content"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/markdownGuide"/>
+            <androidx.core.widget.NestedScrollView
+                android:scrollbars="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:fillViewport="true">
+                <TextView
+                    android:id="@+id/textViewPreview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </androidx.core.widget.NestedScrollView>
+            <com.google.android.material.chip.ChipGroup
+                android:layout_marginTop="5dp"
+                android:id="@+id/chipGroupSubCategory"
+                android:layout_width="wrap_content"
+                app:singleSelection="false"
+                app:singleLine="false"
+                android:layout_height="wrap_content">
+            </com.google.android.material.chip.ChipGroup>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:id="@+id/buttonSubmit"
+                android:text="Submit"/>
+        </LinearLayout>
+    </ScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

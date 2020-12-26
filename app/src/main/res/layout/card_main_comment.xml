@@ -23,6 +23,14 @@
             app:layout_constraintTop_toBottomOf="@id/textViewUserName"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
+        <TextView
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewComment"
+            android:id="@+id/buttonAddReply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reply"
+            style="@style/TextAppearance.AppCompat.Button"/>
         <androidx.constraintlayout.widget.Guideline
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -33,7 +41,7 @@
             android:id="@+id/recyclerViewReplyComments"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/textViewComment"
+            app:layout_constraintTop_toBottomOf="@id/buttonAddReply"
             app:layout_constraintStart_toStartOf="@id/guideline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"

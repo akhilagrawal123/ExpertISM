@@ -2,4 +2,5 @@
     <string name="app_name">ExpertISM</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="markdownGuide">You can use markdown to format your text. Click on \'Hints\' in the toolbar to know about markdown conventions supported by the editor. Preview:</string>
 </resources>

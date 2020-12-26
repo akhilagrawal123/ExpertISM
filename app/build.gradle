@@ -14,6 +14,11 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -31,6 +36,12 @@ dependencies {
     implementation 'com.google.android.material:material:1.2.1'   //material design dependency
     implementation 'com.mikhaellopez:circularimageview:4.2.0'// circular image view dependency...
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation "io.noties.markwon:core:4.6.0"   //Markwon for Markdown
+    implementation  "io.noties.markwon:editor:4.6.0"
+    implementation  "io.noties.markwon:ext-latex:4.6.0"
+    implementation  "io.noties.markwon:ext-strikethrough:4.6.0"
+    implementation  "io.noties.markwon:html:4.6.0"
+    implementation  "io.noties.markwon:inline-parser:4.6.0"
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
     implementation 'com.google.code.gson:gson:2.8.6'
     testImplementation 'junit:junit:4.12'
