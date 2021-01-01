@@ -67,7 +67,7 @@
         app:layout_constraintVertical_bias="0.068" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/createProfileBranchEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -99,7 +99,7 @@
         app:layout_constraintVertical_bias="0.093" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/createProfileYearEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -129,7 +129,7 @@
         app:layout_constraintVertical_bias="0.129" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/createProfileButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Create"
@@ -144,7 +144,7 @@
         app:layout_constraintVertical_bias="0.719" />
 
     <EditText
-        android:id="@+id/editTextTextMultiLine"
+        android:id="@+id/editTextBio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="33dp"

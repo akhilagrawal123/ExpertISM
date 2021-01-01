@@ -29,7 +29,7 @@ public class BookmarksActivity extends AppCompatActivity implements PreviewAdapt
         recyclerView = findViewById(R.id.recyclerView);
         //chipGroupSubCategory = findViewById(R.id.chipGroupSubCategory);
 
-        preparePreviewList();
+        //preparePreviewList();
 
         adapter = new PreviewAdapter(previewList, this);
         recyclerView.setAdapter(adapter);
@@ -69,7 +69,7 @@ public class BookmarksActivity extends AppCompatActivity implements PreviewAdapt
         subCategoryList.add(new SubCategory(7, "Campus Life"));
     }*/
 
-    private void preparePreviewList() {
+    /*private void preparePreviewList() {
         previewList = new ArrayList<>();
         HashSet<Integer> set1 = new HashSet<>(), set2 = new HashSet<>(), set3 = new HashSet<>(), set4 = new HashSet<>();
         set1.add(1);set1.add(5);
@@ -96,7 +96,7 @@ public class BookmarksActivity extends AppCompatActivity implements PreviewAdapt
         previewList.add(new PreviewAdapter.PreviewItem("The Best Club Of ISM", "Akhil Agrawal", "I absolutely love ADC, and I explain why...", set2));
         previewList.add(new PreviewAdapter.PreviewItem("ISM Culture", "Aditya Sinha", "This great institute going by the name I.S.M encompasses...", set3));
         previewList.add(new PreviewAdapter.PreviewItem("Tips for a great GPA", "Abhishek Kumar Jain", "Read more to find out what it needs to...", set4));
-    }
+    }*/
 
     @Override
     public void onDomainClick(int position) {

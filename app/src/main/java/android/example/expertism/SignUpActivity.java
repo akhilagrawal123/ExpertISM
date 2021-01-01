@@ -2,7 +2,11 @@ package android.example.expertism;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.example.expertism.modelClasses.LoginResult;
+import android.example.expertism.modelClasses.SignupResult;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.view.Window;
@@ -26,7 +30,7 @@ public class SignUpActivity extends AppCompatActivity {
     FloatingActionButton nextSignUPBtn;
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
-    private String BASE_URL = "http://192.168.43.164:3000";
+    private String BASE_URL = "http://192.168.0.103:3000";
 
 
     @Override
@@ -92,20 +96,30 @@ public class SignUpActivity extends AppCompatActivity {
                 map.put("email", email);
                 map.put("password", password);
 
-                Call<LoginResult> call = retrofitInterface.executeLogin(map);
+                Call<SignupResult> call = retrofitInterface.executeSignup(map);
 
-                call.enqueue(new Callback<LoginResult>() {
+                call.enqueue(new Callback<SignupResult>() {
                     @Override
-                    public void onResponse(Call<LoginResult> call, Response<LoginResult> response) {
-                        if(response.code() == 200)
-                        {
+                    public void onResponse(Call<SignupResult> call, Response<SignupResult> response) {
+                       if(!response.isSuccessful())
+                       {
+                           Toast.makeText(SignUpActivity.this, "Code: " + response.code(), Toast.LENGTH_SHORT).show();
+                           Log.i("Signup: ", response.message());
+                           return;
+                       }
 
-                        }
+                       String message = response.message();
+
+                        Toast.makeText(SignUpActivity.this, message, Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(SignUpActivity.this,HomeActivity.class);
+                        startActivity(intent);
+                        Log.i("SignUp: ",message);
                     }
 
                     @Override
-                    public void onFailure(Call<LoginResult> call, Throwable t) {
+                    public void onFailure(Call<SignupResult> call, Throwable t) {
                         Toast.makeText(SignUpActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                        Log.i("SignupF", t.getMessage());
                     }
                 });
             }

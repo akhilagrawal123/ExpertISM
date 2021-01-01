@@ -16,5 +16,7 @@ public class MyProfileActivity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
     }
 }

@@ -64,9 +64,9 @@ public class PreviewAdapter extends RecyclerView.Adapter<PreviewAdapter.PreviewV
         String heading;
         String writerName;
         String previewText;
-        HashSet<Integer> subCategorySet;
+        HashSet<String> subCategorySet;
 
-        public PreviewItem(String heading, String writerName, String previewText, HashSet<Integer> subCategorySet) {
+        public PreviewItem(String heading, String writerName, String previewText, HashSet<String> subCategorySet) {
             this.heading = heading;
             this.writerName = writerName;
             this.previewText = previewText;

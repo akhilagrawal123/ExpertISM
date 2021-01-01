@@ -48,16 +48,16 @@ public class HomeActivity extends AppCompatActivity implements HomeCategoryAdapt
         setUpToolbarNavigation();
 
         list = new ArrayList<>();
-        list.add(new HomeCategoryAdapter.HomeItem("App Development", R.mipmap.app_dev,ANDROID));
-        list.add(new HomeCategoryAdapter.HomeItem("Web Development", R.mipmap.web, WEB));
-        list.add(new HomeCategoryAdapter.HomeItem("Machine Learning", R.mipmap.ml, ML));
-        list.add(new HomeCategoryAdapter.HomeItem("Artificial Intelligence", R.mipmap.artificial_intelligence, AI));
-        list.add(new HomeCategoryAdapter.HomeItem("Content Writing", R.mipmap.content, CONTENT));
-        list.add(new HomeCategoryAdapter.HomeItem("UI/UX Design", R.mipmap.ui, UIUX));
-        list.add(new HomeCategoryAdapter.HomeItem("Video Editing", R.mipmap.video, VIDEO));
-        list.add(new HomeCategoryAdapter.HomeItem("Others", R.mipmap.misc, OTHERS));
-        list.add(new HomeCategoryAdapter.HomeItem("Personalized Blogs", R.mipmap.misc, OTHERS));
-        list.add(new HomeCategoryAdapter.HomeItem("Bookmarks", R.mipmap.misc, OTHERS));
+        list.add(new HomeCategoryAdapter.HomeItem("Coding-Dev", R.mipmap.app_dev,ANDROID));
+        list.add(new HomeCategoryAdapter.HomeItem("Academics", R.mipmap.web, WEB));
+        list.add(new HomeCategoryAdapter.HomeItem("Placements", R.mipmap.ml, ML));
+        list.add(new HomeCategoryAdapter.HomeItem("Hostel", R.mipmap.artificial_intelligence, AI));
+        list.add(new HomeCategoryAdapter.HomeItem("Clubs", R.mipmap.content, CONTENT));
+        list.add(new HomeCategoryAdapter.HomeItem("Personalised", R.mipmap.ui, UIUX));
+        list.add(new HomeCategoryAdapter.HomeItem("Bookmarks", R.mipmap.video, VIDEO));
+        list.add(new HomeCategoryAdapter.HomeItem("Miscellaneous", R.mipmap.misc, OTHERS));
+//        list.add(new HomeCategoryAdapter.HomeItem("Personalized Blogs", R.mipmap.misc, OTHERS));
+//        list.add(new HomeCategoryAdapter.HomeItem("Bookmarks", R.mipmap.misc, OTHERS));
         displayRecyclerView();
     }
 
@@ -127,6 +127,7 @@ public class HomeActivity extends AppCompatActivity implements HomeCategoryAdapt
             return;
         }
         Intent intent = new Intent(this, CategoryActivity.class);
+        intent.putExtra("category", list.get(position).itemName);
         startActivity(intent);
     }
 }
