@@ -8,6 +8,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -61,9 +63,15 @@ public class PreviewAdapter extends RecyclerView.Adapter<PreviewAdapter.PreviewV
     }
 
     public static class PreviewItem{
+        @SerializedName("_id")
+        String _id;
+        @SerializedName("title")
         String heading;
+        @SerializedName("author")
         String writerName;
+        @SerializedName("content")
         String previewText;
+        @SerializedName("subCategory")
         HashSet<String> subCategorySet;
 
         public PreviewItem(String heading, String writerName, String previewText, HashSet<String> subCategorySet) {

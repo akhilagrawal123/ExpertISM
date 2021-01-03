@@ -44,7 +44,7 @@ public class CategoryActivity extends AppCompatActivity implements PreviewAdapte
 
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
-    private String BASE_URL = "http://192.168.0.103:3000";
+    private String BASE_URL = "http://192.168.1.5:3000";
     public SharedPreferences sharedPreferences;
     public SharedPreferences.Editor editor;
 
@@ -79,6 +79,7 @@ public class CategoryActivity extends AppCompatActivity implements PreviewAdapte
                 {
                     Log.i("SubCategoryList: ", response.body().subCategories.size() + "");
                     subCategoryList = response.body().subCategories;
+                    previewList = response.body().blogs;
                     prepareSubCategoryChips();
                 }
             }
@@ -123,13 +124,13 @@ public class CategoryActivity extends AppCompatActivity implements PreviewAdapte
     private void prepareSubCategoryChips(){
         Chip chipAll = new Chip(this);
         chipAll.setTag("All");
-        chipAll.setId(0);
+        chipAll.setId(subCategoryList.size());
         chipAll.setText("All");
         chipAll.setCheckable(true);
         chipAll.setClickable(true);
         chipAll.setChecked(true);
         chipGroupSubCategory.addView(chipAll);
-        int id = 1;
+        int id = 0;
         for(String subCategory: subCategoryList){
             Chip chip = new Chip(this);
             chip.setTag(subCategory);
@@ -141,7 +142,6 @@ public class CategoryActivity extends AppCompatActivity implements PreviewAdapte
             id++;
         }
     }
-    //hey android studio devta humne khuch shabd kotlin bhasa mai likhe hai krapya unhe accpet kare
 
 //    private void prepareSubCategoryList() {
 //        subCategoryList = new ArrayList<>();
@@ -206,7 +206,7 @@ public class CategoryActivity extends AppCompatActivity implements PreviewAdapte
         Log.d(TAG, "filterByCategory: Filtering by "+subCategory);
         Toast.makeText(this, subCategory + "", Toast.LENGTH_SHORT).show();
         ArrayList<PreviewAdapter.PreviewItem> newList = new ArrayList<>();
-        if(subCategory==-1 || subCategory==0) {
+        if(subCategory==-1 || subCategory==subCategoryList.size()) {
             adapter.updateData(previewList);
             return;
         }
